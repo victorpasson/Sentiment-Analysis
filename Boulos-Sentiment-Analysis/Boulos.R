@@ -10,9 +10,10 @@ require(ggplot2)
 require(RColorBrewer)
 require(stringi)
 require(tm)
+library(wordcloud)
 
 ## Reading Positive/Negatives/Neutral words
-fullwords <- read.delim("lexico_v3.0.txt", ",", header = FALSE)
+fullwords <- read.delim("C:/Users/victor/Desktop/LearnR/Sentimento/Lexicos/oplexicon_v3.0/lexico_v3.0.txt", ",", header = FALSE)
 head(fullwords, 2)
 names(fullwords) <- c("lexico", "type", "sentiment", "mode")
 
@@ -24,10 +25,10 @@ negativewords <- fullwords %>% filter(sentiment == -1)
 head(negativewords, 2)
 
 ## Finding tweets
-setup_twitter_oauth(consumer_key = "",
-                    consumer_secret = "",
-                    access_token = "",
-                    access_secret = "")
+setup_twitter_oauth(consumer_key = "Hv9IlPQdXanLQA3RmKwYj5GbA",
+                    consumer_secret = "fM62rOf1yt4dRso9DLgA0WqUiBdVlDK6N78tc8la0PdezqwtqG",
+                    access_token = "1321975861675962369-zjg4qTfCjzlBwq3BXMiogr27mShozI",
+                    access_secret = "aeYkc0t6vK68mQMP70TnBSHXE5CGLi7qRn8oVVh1A5EGU")
 
 boulos <- searchTwitter("Boulos", n = 10000, lang = "pt")
 txt.boulos <- sapply(boulos, function(x) x$getText())
